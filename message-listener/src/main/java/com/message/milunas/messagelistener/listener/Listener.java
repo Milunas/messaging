@@ -14,8 +14,8 @@ public class Listener {
     private static final Logger log = LoggerFactory.getLogger(Listener.class);
 
     @StreamListener(target = Sink.INPUT)
-    public void receiveGranted(@Payload Event event) {
-        log.info("Event occurred: {}", event);
+    public void receive(@Payload Event event) {
+        log.info("Event with type: {}", event.getType());
     }
 
 }

@@ -1,6 +1,7 @@
 package com.message.milunas.messagepublisher.publisher;
 
 import com.message.milunas.dto.event.Event;
+import com.message.milunas.dto.event.message.DefaultEvent;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
@@ -17,9 +18,11 @@ public class Publisher {
         this.source = source;
     }
 
-    public void publish(Event event) {
+    public void trigger() {
+        Event event = new DefaultEvent("HELLO WORLD");
         Map<String, Object> headers = new HashMap<>();
-        headers.put("type", "DEFAULT");
+        headers.put("type", event.getType());
         source.output().send(new GenericMessage<>(event, headers));
     }
+
 }
