@@ -14,7 +14,8 @@ public class EventController {
     }
 
     @GetMapping("/event/trigger")
-    public void triggerEvent() {
+    public String triggerEvent() {
         publisher.trigger();
+        return "TRIGGERED";
     }
 }

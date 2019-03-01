@@ -5,3 +5,5 @@ spring:
         output:
           destination: channel
           contentType: application/json
+server:
+  port: 8081
